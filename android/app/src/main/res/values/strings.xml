@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">O-Zenith</string>
+    <string name="title_activity_main">O-Zenith</string>
+    <string name="package_name">com.orithe.ozenith</string>
+    <string name="custom_url_scheme">com.orithe.ozenith</string>
+</resources>

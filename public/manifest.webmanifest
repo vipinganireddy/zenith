@@ -1,0 +1,29 @@
+{
+  "id": "/",
+  "name": "O-Zenith — PDF Workspace",
+  "short_name": "O-Zenith",
+  "description": "Edit, convert, compress, sign and organise PDFs. Everything runs on your device — files are never uploaded.",
+  "start_url": "/dashboard?source=pwa",
+  "scope": "/",
+  "display": "standalone",
+  "display_override": ["standalone", "minimal-ui"],
+  "orientation": "any",
+  "background_color": "#f9f9fc",
+  "theme_color": "#211200",
+  "categories": ["productivity", "utilities", "business"],
+  "icons": [
+    { "src": "/icons/icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any" },
+    { "src": "/icons/icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any" },
+    { "src": "/icons/maskable-512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" },
+    { "src": "/icons/icon.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "any" }
+  ],
+  "shortcuts": [
+    { "name": "Compress PDF", "url": "/dashboard/tools/compress-pdf", "icons": [{ "src": "/icons/icon-192.png", "sizes": "192x192" }] },
+    { "name": "Merge PDF", "url": "/dashboard/tools/merge-pdf", "icons": [{ "src": "/icons/icon-192.png", "sizes": "192x192" }] },
+    { "name": "Scan to PDF", "url": "/dashboard/tools/scan-to-pdf", "icons": [{ "src": "/icons/icon-192.png", "sizes": "192x192" }] },
+    { "name": "My files", "url": "/dashboard/files", "icons": [{ "src": "/icons/icon-192.png", "sizes": "192x192" }] }
+  ],
+  "file_handlers": [
+    { "action": "/dashboard/tools", "accept": { "application/pdf": [".pdf"] } }
+  ]
+}

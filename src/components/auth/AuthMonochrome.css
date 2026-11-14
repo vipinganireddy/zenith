@@ -1,0 +1,907 @@
+/* ═══════════════════════════════════════════════════════════════════════════
+   O-ZENITH Monochrome Glassmorphism Design System
+   Strict Pure Black & White (#000000 - #030303)
+   Streamlined Spatial Double-Bezel Glass & 3D Specular Physics
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+/* ── Centered Single-Viewport Layout ── */
+.mono-viewport {
+  min-height: 100vh;
+  min-height: 100dvh;
+  width: 100%;
+  background-color: #030508;
+  color: #FFFFFF;
+  position: relative;
+  overflow-x: hidden;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  box-sizing: border-box;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.mono-viewport,
+.mono-viewport *,
+.mono-viewport *::before,
+.mono-viewport *::after {
+  box-sizing: border-box;
+}
+
+/* ── Dark Edge Vignette ── */
+.mono-vignette {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 2;
+  background: radial-gradient(
+    ellipse at center,
+    transparent 35%,
+    rgba(0, 0, 0, 0.90) 100%
+  );
+}
+
+/* ── Top Header Identity Bar ── */
+.mono-header {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  padding: calc(env(safe-area-inset-top, 0px) + 16px) 24px 8px;
+  position: relative;
+  z-index: 20;
+}
+
+@media (min-width: 640px) {
+  .mono-header {
+    padding: 22px 40px 8px;
+  }
+}
+
+.mono-brand-wordmark {
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: 0.24em;
+  background: linear-gradient(135deg, #FFFFFF 0%, rgba(255, 255, 255, 0.90) 60%, #38BDF8 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-transform: uppercase;
+  opacity: 0.95;
+  user-select: none;
+  cursor: default;
+  display: inline-flex;
+  align-items: center;
+  transition: opacity 0.2s ease, transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), filter 0.25s ease;
+}
+
+[data-theme="light"] .mono-brand-wordmark {
+  background: linear-gradient(135deg, #02070A 0%, #0369A1 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* ── Centerpiece Area ── */
+.mono-centerpiece {
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px 16px;
+  position: relative;
+  z-index: 10;
+  perspective: 1200px;
+}
+
+.mono-auth-stack {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  max-width: 430px;
+}
+
+/* ── Bottom Footer Credit ── */
+.mono-footer {
+  width: 100%;
+  padding-bottom: calc(env(safe-area-inset-bottom, 0px) + 12px);
+  padding-top: 8px;
+  text-align: center;
+  position: relative;
+  z-index: 20;
+}
+
+.mono-credit-text {
+  margin: 0;
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  color: rgba(255, 255, 255, 0.25);
+  user-select: none;
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   STREAMLINED DOUBLE-BEZEL SPATIAL GLASS CARD ARCHITECTURE
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+/* ── Outer Precision Glass Bezel ── */
+.glass-auth-outer-bezel {
+  max-width: 430px;
+  width: 100%;
+  min-width: 0;
+  padding: 4px;
+  border-radius: 26px;
+  background: rgba(2, 151, 222, 0.04);
+  border: 1px solid rgba(2, 151, 222, 0.18);
+  backdrop-filter: blur(28px) saturate(180%);
+  -webkit-backdrop-filter: blur(28px) saturate(180%);
+  box-shadow: 0 35px 90px rgba(3, 5, 8, 0.95), 0 0 40px rgba(2, 151, 222, 0.10);
+  position: relative;
+  transition: transform 0.3s cubic-bezier(0.22, 1, 0.36, 1), border-color 0.25s ease;
+}
+
+.glass-auth-outer-bezel:hover {
+  transform: translateY(-2px);
+}
+
+@media (max-width: 480px) {
+  .glass-auth-outer-bezel {
+    padding: 3px;
+    border-radius: 22px;
+  }
+}
+
+/* Outer Specular Tracking Highlight */
+.glass-outer-glow-border {
+  position: absolute;
+  inset: -1px;
+  pointer-events: none;
+  border-radius: inherit;
+  padding: 1px;
+  background: radial-gradient(
+    220px circle at var(--mouse-x, var(--card-mouse-x, -999px)) var(--mouse-y, var(--card-mouse-y, -999px)),
+    rgba(255, 255, 255, 0.35),
+    transparent 100%
+  );
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  z-index: 1;
+}
+
+/* ── Core Inner Glass Card ── */
+.glass-auth-card {
+  width: 100%;
+  min-width: 0;
+  border-radius: 24px;
+  padding: 24px 26px;
+  position: relative;
+  z-index: 2;
+  background: rgba(9, 13, 20, 0.70);
+  backdrop-filter: blur(40px) saturate(180%);
+  -webkit-backdrop-filter: blur(40px) saturate(180%);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.60), inset 0 1px 0 0 rgba(255, 255, 255, 0.12);
+  overflow: hidden;
+  transition: border-color 0.25s ease, box-shadow 0.25s ease;
+}
+
+@media (max-width: 480px) {
+  .glass-auth-card {
+    padding: 18px 16px;
+    border-radius: 18px;
+  }
+}
+
+/* Tactile Micro-Grain Frosted Texture */
+.glass-grain-overlay {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0.032;
+  mix-blend-mode: overlay;
+  z-index: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+}
+
+/* Specular mouse glow on inner card surface & border */
+.glass-card-glow-border {
+  position: absolute;
+  inset: -1px;
+  pointer-events: none;
+  border-radius: inherit;
+  padding: 1px;
+  background: radial-gradient(
+    280px circle at var(--card-mouse-x, -999px) var(--card-mouse-y, -999px),
+    rgba(2, 151, 222, 0.50),
+    transparent 75%
+  );
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  z-index: 1;
+}
+
+.glass-card-glow-surface {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  border-radius: inherit;
+  background: radial-gradient(
+    380px circle at var(--card-mouse-x, -999px) var(--card-mouse-y, -999px),
+    rgba(255, 255, 255, 0.045),
+    transparent 70%
+  );
+  z-index: 0;
+}
+
+.glass-card-inner {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  min-width: 0;
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   SLIM SEGMENTED GLASS PILL MODE SWITCHER (CREATE ACCOUNT vs SIGN IN)
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+.glass-segmented-toggle {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  padding: 3px;
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.035);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  margin-bottom: 14px;
+  position: relative;
+  gap: 3px;
+  user-select: none;
+}
+
+.glass-segmented-tab {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 6px 12px;
+  border-radius: 9px;
+  text-decoration: none;
+  font-size: 12px;
+  font-weight: 500;
+  color: rgba(255, 255, 255, 0.50);
+  transition: color 0.2s ease;
+  cursor: pointer;
+  text-align: center;
+  background: transparent;
+  border: none;
+  line-height: 18px;
+  outline: none;
+}
+
+.glass-segmented-tab:hover:not(.is-active):not(.glass-segmented-active) {
+  color: #ffffff;
+}
+
+.glass-segmented-tab.is-active,
+.glass-segmented-tab.glass-segmented-active {
+  color: #ffffff !important;
+  font-weight: 600 !important;
+}
+
+.glass-segmented-active-pill {
+  position: absolute;
+  inset: 0;
+  border-radius: 9px;
+  background: #0297DE;
+  box-shadow: 0 0 16px rgba(2, 151, 222, 0.45), 0 2px 8px rgba(0, 0, 0, 0.4);
+  z-index: 1;
+  pointer-events: none;
+}
+
+.glass-segmented-tab-text {
+  position: relative;
+  z-index: 2;
+  pointer-events: none;
+  display: inline-block;
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   MICRO-INTERACTIONS & COMPACT TYPOGRAPHY
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+/* ── Eyebrow Row (When on Sub-Screens like OTP or Reset Password) ── */
+.glass-eyebrow-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
+
+.glass-status-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 3px 9px;
+  border-radius: 9999px;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+}
+
+.mono-status-dot {
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: #0297DE;
+  box-shadow: 0 0 7px #0297DE;
+  animation: mono-dot-pulse 2.2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  flex-shrink: 0;
+}
+
+@keyframes mono-dot-pulse {
+  0%, 100% {
+    opacity: 1;
+    transform: scale(1);
+    box-shadow: 0 0 7px #0297DE;
+  }
+  50% {
+    opacity: 0.35;
+    transform: scale(0.85);
+    box-shadow: 0 0 3px rgba(2, 151, 222, 0.4);
+  }
+}
+
+.glass-eyebrow {
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  color: rgba(255, 255, 255, 0.65);
+  font-weight: 500;
+  margin: 0;
+  line-height: 14px;
+}
+
+/* ── Crisp, Tight Heading ── */
+.glass-heading {
+  font-size: 20px;
+  line-height: 1.2;
+  font-weight: 600;
+  letter-spacing: -0.03em;
+  color: #ffffff;
+  margin: 0;
+  font-family: inherit;
+}
+
+.glass-heading-gradient {
+  background: linear-gradient(180deg, #FFFFFF 0%, #FFFFFF 70%, rgba(255, 255, 255, 0.70) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+@media (min-width: 640px) {
+  .glass-heading {
+    font-size: 22px;
+  }
+}
+
+.glass-subtitle {
+  font-size: 13px;
+  line-height: 18px;
+  color: rgba(255, 255, 255, 0.48);
+  font-weight: 400;
+  margin: 0;
+}
+
+/* ── Glass Input Fields with Bottom Specular Beam ── */
+.glass-field-group {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  min-width: 0;
+}
+
+.glass-field-label {
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  color: rgba(255, 255, 255, 0.50);
+  font-weight: 500;
+  margin-bottom: 4px;
+  display: block;
+  transition: color 0.2s ease, transform 0.2s ease;
+  transform-origin: left;
+}
+
+.glass-field-group:focus-within .glass-field-label {
+  color: rgba(255, 255, 255, 0.90);
+  transform: translateX(2px);
+}
+
+.glass-input-container {
+  display: flex;
+  align-items: center;
+  position: relative;
+  width: 100%;
+  min-width: 0;
+  border-radius: 11px;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  transition: border-color 0.2s ease-out, background-color 0.2s ease-out, box-shadow 0.2s ease-out;
+  overflow: hidden;
+}
+
+.glass-input-container:hover {
+  border-color: rgba(255, 255, 255, 0.16);
+  background: rgba(255, 255, 255, 0.04);
+}
+
+.glass-input-container:focus-within {
+  border-color: #0297DE;
+  background: rgba(2, 151, 222, 0.05);
+  box-shadow: 0 0 0 3px rgba(2, 151, 222, 0.15);
+}
+
+.glass-input-container[data-invalid="true"] {
+  border-color: rgba(239, 68, 68, 0.45);
+  box-shadow: 0 0 0 3px rgba(239, 68, 68, 0.08);
+}
+
+/* Bottom Specular Laser Beam */
+.glass-input-beam {
+  position: absolute;
+  bottom: 0;
+  left: 8px;
+  right: 8px;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, #0297DE, transparent);
+  transform: scaleX(0);
+  transform-origin: center;
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  pointer-events: none;
+  z-index: 2;
+}
+
+.glass-input-container:focus-within .glass-input-beam {
+  transform: scaleX(1);
+}
+
+.glass-input-element {
+  flex: 1;
+  min-width: 0;
+  width: 100%;
+  height: 42px !important;
+  min-height: 42px !important;
+  padding: 9px 14px !important;
+  background: transparent !important;
+  border: none !important;
+  outline: none !important;
+  box-shadow: none !important;
+  font-size: 13.5px !important;
+  line-height: 20px !important;
+  color: #ffffff !important;
+  border-radius: 11px !important;
+}
+
+.glass-input-element::placeholder {
+  color: rgba(255, 255, 255, 0.25) !important;
+  font-size: 13px;
+}
+
+/* Password Toggle Eye Icon */
+.glass-eye-toggle {
+  background: transparent;
+  border: none;
+  color: rgba(255, 255, 255, 0.40);
+  cursor: pointer;
+  padding: 8px 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: color 0.15s ease;
+  flex-shrink: 0;
+}
+
+.glass-eye-toggle:hover {
+  color: rgba(255, 255, 255, 0.85);
+}
+
+/* ── Controls & Utility Row ── */
+.glass-utility-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin-top: 1px;
+}
+
+.glass-checkbox-trigger {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  font-size: 11.5px;
+  color: rgba(255, 255, 255, 0.60);
+  user-select: none;
+  min-height: 24px;
+  transition: color 0.15s ease;
+}
+
+.glass-checkbox-trigger:hover {
+  color: rgba(255, 255, 255, 0.90);
+}
+
+.glass-checkbox-box {
+  width: 15px;
+  height: 15px;
+  border-radius: 4px;
+  border: 1px solid rgba(255, 255, 255, 0.20);
+  background: rgba(255, 255, 255, 0.05);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.15s ease;
+  flex-shrink: 0;
+}
+
+.glass-checkbox-box[data-checked="true"] {
+  background: #ffffff;
+  border-color: #ffffff;
+  color: #000000;
+}
+
+.glass-forgot-link {
+  font-size: 11.5px;
+  color: rgba(255, 255, 255, 0.60);
+  text-decoration: none;
+  text-underline-offset: 4px;
+  transition: color 0.15s ease;
+}
+
+.glass-forgot-link:hover {
+  color: #ffffff;
+  text-decoration: underline;
+}
+
+/* ── Primary CTA Button (Electric Blue Gradient) ── */
+.glass-primary-btn {
+  width: 100%;
+  background: linear-gradient(180deg, #0297DE 0%, #0284C7 100%);
+  color: #ffffff;
+  font-weight: 600;
+  font-size: 14px;
+  padding: 12px 20px;
+  border-radius: 12px;
+  box-shadow: 0 0 25px rgba(2, 151, 222, 0.35), inset 0 1px 0 0 rgba(255, 255, 255, 0.40);
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  user-select: none;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Diagonal metallic light-sweep sheen */
+.glass-primary-btn::after {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -60%;
+  width: 40%;
+  height: 200%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.50),
+    transparent
+  );
+  transform: rotate(25deg);
+  transition: transform 0.65s cubic-bezier(0.16, 1, 0.3, 1), left 0.65s cubic-bezier(0.16, 1, 0.3, 1);
+  pointer-events: none;
+}
+
+.glass-primary-btn:hover:not(:disabled)::after {
+  left: 140%;
+}
+
+.glass-primary-btn:hover:not(:disabled) {
+  background: linear-gradient(180deg, #19ADFF 0%, #0297DE 100%);
+  box-shadow: 0 0 32px rgba(2, 151, 222, 0.55), inset 0 1px 0 0 rgba(255, 255, 255, 0.55);
+  transform: translateY(-1px);
+}
+
+.glass-primary-btn:active:not(:disabled) {
+  transform: scale(0.98);
+}
+
+.glass-primary-btn:disabled {
+  opacity: 0.60;
+  cursor: not-allowed;
+}
+
+.glass-arrow-icon {
+  transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.glass-primary-btn:hover:not(:disabled) .glass-arrow-icon {
+  transform: translateX(4px);
+}
+
+/* ── Hairline Divider ── */
+.glass-divider {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  width: 100%;
+  margin: 1px 0;
+}
+
+.glass-divider-line {
+  flex: 1;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.10), transparent);
+}
+
+.glass-divider-text {
+  font-size: 9.5px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.30);
+  font-weight: 500;
+  user-select: none;
+}
+
+/* ── Secondary CTA Button (High-Gloss Dark Glass Google Button) ── */
+.glass-secondary-btn {
+  width: 100%;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.10);
+  box-shadow: inset 0 1px 0 0 rgba(255, 255, 255, 0.12);
+  color: rgba(255, 255, 255, 0.90);
+  font-size: 13.5px;
+  font-weight: 500;
+  padding: 11px 18px;
+  border-radius: 11px;
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  user-select: none;
+}
+
+.glass-secondary-btn:hover:not(:disabled) {
+  background: rgba(255, 255, 255, 0.06);
+  border-color: rgba(255, 255, 255, 0.22);
+  box-shadow: inset 0 1px 0 0 rgba(255, 255, 255, 0.22), 0 8px 24px rgba(0, 0, 0, 0.45);
+}
+
+.glass-secondary-btn:active:not(:disabled) {
+  transform: scale(0.99);
+}
+
+.glass-secondary-btn:disabled {
+  opacity: 0.60;
+  cursor: not-allowed;
+}
+
+/* ── Footer Switch Link ── */
+.glass-switch-text {
+  margin: 0;
+  text-align: center;
+  font-size: 11.5px;
+  color: rgba(255, 255, 255, 0.45);
+}
+
+.glass-switch-action {
+  color: #0297DE;
+  font-weight: 500;
+  text-decoration: none;
+  text-underline-offset: 4px;
+  margin-left: 4px;
+  transition: opacity 0.15s ease;
+}
+
+.glass-switch-action:hover {
+  text-decoration: underline;
+  color: #19ADFF;
+}
+
+/* ── Error Banner ── */
+.glass-error-banner {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 12px;
+  border-radius: 10px;
+  background: rgba(239, 68, 68, 0.08);
+  border: 1px solid rgba(239, 68, 68, 0.22);
+  color: rgba(254, 202, 202, 0.95);
+  font-size: 12.5px;
+  line-height: 17px;
+  font-weight: 400;
+}
+
+/* ── Back button in card ── */
+.glass-back-btn {
+  width: 26px;
+  height: 26px;
+  border-radius: 7px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  background: rgba(255, 255, 255, 0.04);
+  color: rgba(255, 255, 255, 0.75);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.15s ease;
+}
+
+.glass-back-btn:hover {
+  background: rgba(255, 255, 255, 0.08);
+  color: #ffffff;
+  border-color: rgba(255, 255, 255, 0.24);
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   LIGHT MODE OVERRIDES FOR AUTH VIEWPORT (/login, /register, etc.)
+   ═══════════════════════════════════════════════════════════════════════════ */
+[data-theme="light"] .mono-viewport,
+html.light .mono-viewport {
+  background-color: #F0F6FA;
+  color: #02070A;
+}
+
+[data-theme="light"] .mono-vignette,
+html.light .mono-vignette {
+  background: radial-gradient(ellipse at center, transparent 40%, rgba(2, 151, 222, 0.05) 100%);
+}
+
+[data-theme="light"] .mono-brand-wordmark,
+html.light .mono-brand-wordmark {
+  color: #02070A;
+  opacity: 0.92;
+}
+
+[data-theme="light"] .mono-credit-text,
+html.light .mono-credit-text {
+  color: rgba(2, 7, 10, 0.45);
+}
+
+[data-theme="light"] .glass-auth-outer-bezel,
+html.light .glass-auth-outer-bezel {
+  background: rgba(255, 255, 255, 0.75);
+  border-color: rgba(2, 151, 222, 0.20);
+  box-shadow: 0 25px 60px rgba(2, 151, 222, 0.12), 0 0 30px rgba(2, 151, 222, 0.06);
+}
+
+[data-theme="light"] .glass-auth-card,
+html.light .glass-auth-card {
+  background: rgba(255, 255, 255, 0.80);
+  backdrop-filter: blur(40px);
+  -webkit-backdrop-filter: blur(40px);
+  border: 1px solid rgba(15, 23, 42, 0.08);
+  box-shadow: 0 16px 40px rgba(15, 23, 42, 0.06), inset 0 1px 0 0 #FFFFFF;
+  color: #0F172A;
+  border-radius: 24px;
+}
+
+[data-theme="light"] .glass-heading,
+html.light .glass-heading {
+  color: #02070A;
+}
+
+[data-theme="light"] .glass-heading-gradient,
+html.light .glass-heading-gradient {
+  background: linear-gradient(180deg, #02070A 0%, rgba(2, 7, 10, 0.80) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+[data-theme="light"] .glass-subtitle,
+html.light .glass-subtitle {
+  color: rgba(2, 7, 10, 0.60);
+}
+
+[data-theme="light"] .glass-field-label,
+html.light .glass-field-label {
+  color: rgba(2, 7, 10, 0.65);
+}
+
+[data-theme="light"] .glass-input-container,
+html.light .glass-input-container {
+  background: rgba(240, 246, 252, 0.85);
+  border-color: rgba(2, 151, 222, 0.20);
+}
+
+[data-theme="light"] .glass-input-container:hover,
+html.light .glass-input-container:hover {
+  border-color: rgba(2, 151, 222, 0.40);
+  background: #ffffff;
+}
+
+[data-theme="light"] .glass-input,
+html.light .glass-input {
+  color: #02070A;
+}
+
+[data-theme="light"] .glass-input::placeholder,
+html.light .glass-input::placeholder {
+  color: rgba(2, 7, 10, 0.40);
+}
+
+[data-theme="light"] .glass-google-btn,
+html.light .glass-google-btn {
+  background: rgba(240, 246, 252, 0.85);
+  border-color: rgba(2, 151, 222, 0.22);
+  color: #02070A;
+}
+
+[data-theme="light"] .glass-google-btn:hover,
+html.light .glass-google-btn:hover {
+  background: #ffffff;
+  border-color: rgba(2, 151, 222, 0.45);
+}
+
+[data-theme="light"] .glass-segmented-toggle,
+html.light .glass-segmented-toggle {
+  background: rgba(2, 151, 222, 0.08);
+  border-color: rgba(2, 151, 222, 0.18);
+}
+
+[data-theme="light"] .glass-segmented-tab,
+html.light .glass-segmented-tab {
+  color: rgba(2, 7, 10, 0.60);
+}
+
+[data-theme="light"] .glass-segmented-tab:hover:not(.is-active):not(.glass-segmented-active),
+html.light .glass-segmented-tab:hover:not(.is-active):not(.glass-segmented-active) {
+  color: #02070A;
+}
+
+[data-theme="light"] .glass-segmented-active-pill,
+html.light .glass-segmented-active-pill {
+  background: #0297DE;
+  box-shadow: 0 0 16px rgba(2, 151, 222, 0.35);
+}
+
+[data-theme="light"] .glass-segmented-tab.is-active,
+[data-theme="light"] .glass-segmented-tab.glass-segmented-active,
+html.light .glass-segmented-tab.is-active,
+html.light .glass-segmented-tab.glass-segmented-active {
+  color: #ffffff !important;
+}
+
+[data-theme="light"] .glass-forgot-link,
+html.light .glass-forgot-link {
+  color: #0297DE;
+}
+
+[data-theme="light"] .glass-switch-prompt,
+html.light .glass-switch-prompt {
+  color: rgba(2, 7, 10, 0.55);
+}
+
+[data-theme="light"] .glass-switch-action,
+html.light .glass-switch-action {
+  color: #0297DE;
+}
